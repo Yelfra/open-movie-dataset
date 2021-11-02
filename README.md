@@ -10,17 +10,21 @@
  ## Version
  1.0
  ## Language
- english
+ English
  
- ## Atributes
- title - name of the movie
- year - year the movie was released
- ratingimdb - average rating of the movie on IMDb
- director - name of the movie director
- actor - summary of well-known starring actors
- country - country of origin or production
- genre - genre of the movie
- oscarnom - number of oscar nominations
- oscars - number of won oscars
+ ## Overview
+ A full overview of query commands are available in query.txt, along with an overview of creating the JSON and CSV files.
+ 
+
+ ## List of Atributes
+ * title - name of the movie
+ * year - year the movie was released
+ * ratingimdb - average rating of the movie on IMDb
+ * director - name of the movie director
+ * actor - summary of well-known starring actors
+ * country - country of origin or production
+ * genre - genre of the movie
+ * oscarnom - number of oscar nominations
+ * oscars - number of won oscars
 
  

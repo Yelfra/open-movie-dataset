@@ -1,0 +1,40 @@
+CREATE TABLE Actor
+(
+  actorID INT NOT NULL,
+  name VARCHAR(30) NOT NULL,
+  surname VARCHAR(30) NOT NULL,
+  PRIMARY KEY (actorID)
+);
+
+CREATE TABLE Director
+(
+  directorID INT NOT NULL,
+  name VARCHAR(30) NOT NULL,
+  surname VARCHAR(30) NOT NULL,
+  PRIMARY KEY (directorID)
+);
+
+CREATE TABLE Movie
+(
+  title VARCHAR(100) NOT NULL,
+  movieID INT NOT NULL,
+  year INT NOT NULL,
+  rating_IMDb FLOAT NOT NULL,
+  country VARCHAR(100) NOT NULL,
+  duration INT NOT NULL,
+  genre VARCHAR(100) NOT NULL,
+  oscars INT NOT NULL,
+  oscarNom INT NOT NULL,
+  directorID INT NOT NULL,
+  PRIMARY KEY (movieID),
+  FOREIGN KEY (directorID) REFERENCES Director(directorID)
+);
+
+CREATE TABLE starring
+(
+  movieID INT NOT NULL,
+  actorID INT NOT NULL,
+  PRIMARY KEY (movieID, actorID),
+  FOREIGN KEY (movieID) REFERENCES Movie(movieID),
+  FOREIGN KEY (actorID) REFERENCES Actor(actorID)
+);
