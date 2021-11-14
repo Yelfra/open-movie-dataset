@@ -14,6 +14,13 @@ CREATE TABLE Director
   PRIMARY KEY (directorID)
 );
 
+CREATE TABLE Genre
+(
+  genreID INT NOT NULL,
+  name VARCHAR(20) NOT NULL,
+  PRIMARY KEY (genreID)
+);
+
 CREATE TABLE Movie
 (
   title VARCHAR(100) NOT NULL,
@@ -22,7 +29,6 @@ CREATE TABLE Movie
   rating_IMDb FLOAT NOT NULL,
   country VARCHAR(100) NOT NULL,
   duration INT NOT NULL,
-  genre VARCHAR(100) NOT NULL,
   oscars INT NOT NULL,
   oscarNom INT NOT NULL,
   directorID INT NOT NULL,
@@ -37,4 +43,13 @@ CREATE TABLE starring
   PRIMARY KEY (movieID, actorID),
   FOREIGN KEY (movieID) REFERENCES Movie(movieID),
   FOREIGN KEY (actorID) REFERENCES Actor(actorID)
+);
+
+CREATE TABLE ofGenre
+(
+  genreID INT NOT NULL,
+  movieID INT NOT NULL,
+  PRIMARY KEY (genreID, movieID),
+  FOREIGN KEY (genreID) REFERENCES Genre(genreID),
+  FOREIGN KEY (movieID) REFERENCES Movie(movieID)
 );

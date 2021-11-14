@@ -13,15 +13,26 @@
  English
  
  ## Overview
- A full overview of query commands are available in query.txt, along with an overview of creating the JSON and CSV files.
- 
+
+ ### Database model
+ Query commands used to generate tables of the database are listed in tables_sql.txt.
+
+ ### Data
+ Query commands used to input data into the database are listed in data_sql.txt.
+
+ ### Generating the JSON file
+ Query commands used to generate the movies.JSON file are listed in JSON_gen.txt.
+
+ ### Generating the CSV file
+ Command used for generating the movies.CSV file can be found in CSV_gen.txt.
 
  ## List of Atributes
  * title - name of the movie
  * year - year the movie was released
- * ratingimdb - average rating of the movie on IMDb
+ * rating_imdb - average rating of the movie on IMDb
+ * duration - movie duration in minutes
  * director - name of the movie director
- * actor - summary of well-known starring actors
+ * actors - summary of well-known starring actors
  * country - country of origin or production
  * genre - genre of the movie
  * oscarnom - number of oscar nominations

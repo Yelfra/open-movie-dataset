@@ -1,0 +1,28 @@
+COPY (
+	SELECT json_agg(movies) FROM (
+		SELECT (
+			json_build_object(
+			'title', movie.title,
+			'year', movie.year,
+			'IMDb_rating', movie.rating_imdb,
+			'duration_minutes', movie.duration,
+			'genre', (SELECT json_agg(genre.name) FROM ofgenre NATURAL JOIN genre WHERE ofgenre.movieid = movie.movieid),
+			'country', movie.country,
+			'oscar_nominations', movie.oscarnom,
+			'oscars_won', movie.oscars,
+			'director', json_build_object(
+				'name', director.name,
+				'surname', director.surname),
+			'actors', (SELECT json_agg(json_build_object(
+					'name', actor.name,
+					'surname', actor.surname))
+					   FROM starring NATURAL JOIN actor WHERE starring.movieid = movie.movieid)
+			)
+			) AS movie
+			FROM movie
+			JOIN director USING(directorid)
+
+			GROUP BY movie.movieid, movie.title, movie.year, movie.rating_imdb, movie.duration, movie.country, movie.oscarnom, movie.oscars,
+				director.name, director.surname
+	) movies
+) TO 'D:\movies.json';
