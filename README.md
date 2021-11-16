@@ -1,4 +1,4 @@
-# OR_0036523987
+# Open Movie Dataset
  Otvoreno Racunarstvo Fran Jelavić
  
  ## Licensing
@@ -26,16 +26,39 @@
  ### Generating the CSV file
  Command used for generating the movies.CSV file can be found in CSV_gen.txt.
 
- ## List of Atributes
- * title - name of the movie
- * year - year the movie was released
- * rating_imdb - average rating of the movie on IMDb
- * duration - movie duration in minutes
- * director - name of the movie director
- * actors - summary of well-known starring actors
- * country - country of origin or production
- * genre - genre of the movie
- * oscarnom - number of oscar nominations
- * oscars - number of won oscars
+ ## Atribute Overview
+
+ ### Movie
+
+ | Name | Description | Datatype |
+ | --- | --- | --- |
+ | title | Name of the movie | String (100 Characters) |
+ | year | Year the movie was released | Integer |
+ | rating_IMDb | Average movie rating on IMDb | Float |
+ | duration | Movie duration in minutes | Integer |
+ | country | Country of movie origin or production | String (100 Characters) |
+ | oscarNom | Number of (Oscar) Academy Awards nominations | Integer |
+ | oscars | Number of (Oscars) Academy Awards won | Integer |
+
+ ### Actor
+
+ | Name | Description | Datatype |
+ | --- | --- | --- |
+ | name | Name of the actor | String (30 Characters) |
+ | surname | Surname of the actor | String (30 Characters) |
+
+ ### Director
+
+ | Name | Description | Datatype |
+ | --- | --- | --- |
+ | name | Name of the director | String (30 Characters) |
+ | surname | Surname of the director | String (30 Characters) |
+
+ ### Genre
+
+ | Name | Description | Datatype |
+ | --- | --- | --- |
+ | name | Name of the genre | String (20 Characters) |
+
 
  

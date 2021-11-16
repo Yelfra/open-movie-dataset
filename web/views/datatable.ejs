@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+
+  <meta name="description" content="Open Movie Database" />
+
+  <link rel="stylesheet" type="text/css" href="./styles/main.css" />
+  <title>Open Movie Dataset</title>
+
+</head>
+
+<body>
+
+  <header>
+    <div>
+      <ul>
+        <li>
+          <a href="/">Home</a>
+        </li>
+        <li>
+          <a href="#">Datatable</a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <div>
+    <input type="text" id="input-all" onkeyup="searchAll()" placeholder="Search all columns..">
+
+    <div>
+      <select id="filter-select" onchange="openFilterFields(this)">
+        <option style="color: rgb(175, 175, 175);">Filter by...</option>
+        <option value="1" data-type="number">Year</option>
+        <option value="4" data-type="number">IMDb Rating</option>
+        <option value="5" data-type="number">Duration</option>
+        <option value="8" data-type="number">Oscar Nominations</option>
+        <option value="9" data-type="number">Oscars</option>
+      </select>
+
+      <div id="filter-field">
+        <input style="display: none;" type="text" id="filter-from" class="filter-hidden" placeholder="From...">
+        <input style="display: none;" type="text" id="filter-to" class="filter-hidden" placeholder=" To...">
+
+        <button style="display: none;" class="filter-hidden" onclick="filterSubmit()">Filter</button>
+
+        <a href="/exports/movies.json" style="display: none;" class="filter-hidden" download="moviesJSON">
+          <button>Download JSON</button>
+        </a>
+        <a href="/exports/movies.csv" style="display: none;" class="filter-hidden" download="moviesCSV">
+          <button>Download CSV</button>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <table id="data-table">
+      <thead>
+        <tr class="header">
+          <th>Title</th>
+          <th>Year</th>
+          <th>Director</th>
+          <th>Genre</th>
+          <th>IMDb Rating</th>
+          <th>Duration</th>
+          <th>Country</th>
+          <th>Starring</th>
+          <th>Oscar Nominations</th>
+          <th>Oscars</th>
+        </tr>
+      </thead>
+
+      <tbody id="data-table-rows">
+        <% for (let movie of movies) { %>
+          <tr>
+            <td>
+              <%= movie.title %>
+            </td>
+            <td>
+              <%= movie.year %>
+            </td>
+            <td>
+              <%= movie.director.name + " " + movie.director.surname %>
+            </td>
+            <td>
+              <% for (let genre of movie.genre) { %>
+                <p>
+                  <%= genre %>
+                </p>
+                <% } %>
+            </td>
+            <td>
+              <%= movie.IMDb_rating %>
+            </td>
+            <td>
+              <%= movie.duration %>
+            </td>
+            <td>
+              <%= movie.country %>
+            </td>
+            <td>
+              <% for (let actor of movie.starring) { %>
+                <p>
+                  <%= actor.name + " " + actor.surname %>
+                </p>
+                <% } %>
+            </td>
+            <td>
+              <%= movie.oscar_nominations %>
+            </td>
+            <td>
+              <%= movie.oscars_won %>
+            </td>
+          </tr>
+          <% } %>
+      </tbody>
+    </table>
+  </main>
+
+  <script>
+    
+    function searchAll() {
+
+      var input = document.getElementById("input-all");
+      var filter = input.value.toUpperCase();
+
+      var table = document.getElementById("data-table-rows");
+      var tr = table.getElementsByTagName("tr");
+
+      for (var i = 0; i < tr.length; i++) {
+
+        var bool = false;
+        for (var j = 0; j < tr[i].getElementsByTagName("td").length; j++) {
+
+          var td = tr[i].getElementsByTagName("td")[j];
+
+          if (td) {
+            var txtValue = td.textContent || td.innerText;
+
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              bool = true;
+              break;
+            }
+          }
+        }
+        if (bool) tr[i].style.display = "";
+        else tr[i].style.display = "none";
+
+      }
+    }
+    
+    function openFilterFields(select) {
+
+      var value = select.value;
+      //alert(value);
+
+      var fields = document.getElementById("filter-field").getElementsByClassName("filter-hidden");
+      fields[0].style.display = "";
+      fields[1].style.display = "";
+      fields[2].style.display = "";
+      fields[3].style.display = "";
+      fields[4].style.display = "";
+    }
+
+    function filterSubmit() {
+
+      var table = document.getElementById("data-table-rows");
+      var tr = table.getElementsByTagName("tr");
+
+      var filterFrom = document.getElementById("filter-from").value;
+      var filterTo = document.getElementById("filter-to").value;
+
+      var column = document.getElementById("filter-select").value;
+
+      for (var i = 0; i < tr.length; i++) {
+
+        var td = tr[i].getElementsByTagName("td")[column];
+
+        if (td) {
+          var txtValue = td.textContent || td.innerText;
+
+          if ((filterFrom === "" || parseFloat(txtValue, 10) >= parseFloat(filterFrom, 10))
+            && (filterTo === "" || parseFloat(txtValue, 10) <= parseFloat(filterTo, 10))) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+
+  </script>
+
+</body>
+
+</html>

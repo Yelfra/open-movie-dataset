@@ -1,7 +1,12 @@
-COPY (
-	SELECT json_agg(movies) FROM (
+const express = require('express');
+const router = express.Router();
+const client = require('../database');
+
+router.get('/', async function (req, res, next) {
+    
+    const movieQuery = `
+    
 		SELECT 
-			
 			 movie.title AS "title",
 			 movie.year AS "year",
 			 movie.rating_imdb AS "IMDb_rating",
@@ -17,12 +22,26 @@ COPY (
 					'name', actor.name,
 					'surname', actor.surname)) AS actors
 					   FROM starring NATURAL JOIN actor WHERE starring.movieid = movie.movieid) AS "starring"
-			
-			
 			FROM movie
 			JOIN director USING(directorid)
 			
 			GROUP BY movie.movieid, movie.title, movie.year, movie.rating_imdb, movie.duration, movie.country, movie.oscarnom, movie.oscars,
 				director.name, director.surname
-	) movies
-) TO 'D:\movies.json';
+			LIMIT 10
+    `
+
+    const movieJSON = (await client.query(movieQuery, []));
+    //console.log("movieJSON:\n" + JSON.stringify(movieJSON));
+
+    //console.log("\nNESTO:\n" + JSON.stringify(movieJSON.rows[0]));
+
+    //const rowsJSON = movieJSON.rows;
+    //console.log("\nrowsJSON:\n" + JSON.stringify(rowsJSON));
+
+	
+    res.render('../views/datatable', {
+        movies: movieJSON.rows
+    });
+});
+
+module.exports = router;
