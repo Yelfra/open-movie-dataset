@@ -1,0 +1,343 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://github.com/Yelfra/open-movie-dataset/movies.json",
+    "type": "object",
+    "title": "Open Movie Dataset",
+    "description": "Open dataset consisting of movies with their attributes",
+    "default": [],
+    "examples": [
+        [
+            {
+                "title": "Inglourious Basterds",
+                "year": 2009,
+                "IMDb_rating": 8.3,
+                "duration": 153,
+                "genre": [
+                    "Action",
+                    "Drama",
+                    "Adventure"
+                ],
+                "country": "USA",
+                "oscar_nominations": 8,
+                "oscars_won": 1,
+                "director": {
+                    "name": "Quentin",
+                    "surname": "Tarantino"
+                },
+                "starring": [
+                    {
+                        "name": "Brad",
+                        "surname": "Pitt"
+                    },
+                    {
+                        "name": "Christopher",
+                        "surname": "Waltz"
+                    },
+                    {
+                        "name": "Michael",
+                        "surname": "Fassbender"
+                    }
+                ]
+            },
+            {
+                "title": "The Lord of the Rings: The Two Towers",
+                "year": 2003,
+                "IMDb_rating": 8.9,
+                "duration": 201,
+                "genre": [
+                    "Action",
+                    "Drama",
+                    "Adventure"
+                ],
+                "country": "New Zealand",
+                "oscar_nominations": 11,
+                "oscars_won": 11,
+                "director": {
+                    "name": "Peter",
+                    "surname": "Jackson"
+                },
+                "starring": [
+                    {
+                        "name": "Elijah",
+                        "surname": "Wood"
+                    },
+                    {
+                        "name": "Ian",
+                        "surname": "McKellen"
+                    },
+                    {
+                        "name": "Viggo",
+                        "surname": "Mortensen"
+                    }
+                ]
+            }
+        ]
+    ],
+    "additionalItems": true,
+    "items": {
+        "$id": "#/items",
+        "anyOf": [
+            {
+                "$id": "#/items/anyOf/0",
+                "type": "object",
+                "title": "Movie",
+                "description": "Movie with a list of its attributes",
+                "default": {},
+                "examples": [
+                    {
+                        "title": "Inglourious Basterds",
+                        "year": 2009,
+                        "IMDb_rating": 8.3,
+                        "duration": 153,
+                        "genre": [
+                            "Action",
+                            "Drama",
+                            "Adventure"
+                        ],
+                        "country": "USA",
+                        "oscar_nominations": 8,
+                        "oscars_won": 1,
+                        "director": {
+                            "name": "Quentin",
+                            "surname": "Tarantino"
+                        },
+                        "starring": [
+                            {
+                                "name": "Brad",
+                                "surname": "Pitt"
+                            },
+                            {
+                                "name": "Christopher",
+                                "surname": "Waltz"
+                            },
+                            {
+                                "name": "Michael",
+                                "surname": "Fassbender"
+                            }
+                        ]
+                    }
+                ],
+                "required": [
+                    "title",
+                    "year",
+                    "IMDb_rating",
+                    "duration",
+                    "genre",
+                    "country",
+                    "oscar_nominations",
+                    "oscars_won",
+                    "director",
+                    "starring"
+                ],
+                "properties": {
+                    "title": {
+                        "$id": "#/items/anyOf/0/properties/title",
+                        "type": "string",
+                        "title": "Title",
+                        "description": "Name of the movie",
+                        "default": "",
+                        "examples": [
+                            "Inglourious Basterds"
+                        ]
+                    },
+                    "year": {
+                        "$id": "#/items/anyOf/0/properties/year",
+                        "type": "integer",
+                        "title": "Year",
+                        "description": "Year the movie was released",
+                        "default": 0,
+                        "examples": [
+                            2009
+                        ]
+                    },
+                    "IMDb_rating": {
+                        "$id": "#/items/anyOf/0/properties/IMDb_rating",
+                        "type": "number",
+                        "title": "IMDb Rating",
+                        "description": "Average rating of the movie on IMDb",
+                        "default": 0.0,
+                        "examples": [
+                            8.3
+                        ]
+                    },
+                    "duration": {
+                        "$id": "#/items/anyOf/0/properties/duration",
+                        "type": "integer",
+                        "title": "Duration",
+                        "description": "Duration of the movie in minutes",
+                        "default": 0,
+                        "examples": [
+                            153
+                        ]
+                    },
+                    "genre": {
+                        "$id": "#/items/anyOf/0/properties/genre",
+                        "type": "array",
+                        "title": "Genre List",
+                        "description": "A list of the movie's genres",
+                        "default": [],
+                        "examples": [
+                            [
+                                "Action",
+                                "Drama"
+                            ]
+                        ],
+                        "additionalItems": true,
+                        "items": {
+                            "$id": "#/items/anyOf/0/properties/genre/items",
+                            "anyOf": [
+                                {
+                                    "$id": "#/items/anyOf/0/properties/genre/items/anyOf/0",
+                                    "type": "string",
+                                    "title": "Genre",
+                                    "description": "Name of the genre",
+                                    "default": "",
+                                    "examples": [
+                                        "Action",
+                                        "Drama"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    "country": {
+                        "$id": "#/items/anyOf/0/properties/country",
+                        "type": "string",
+                        "title": "Country",
+                        "description": "Country of the movie origin or production",
+                        "default": "",
+                        "examples": [
+                            "USA"
+                        ]
+                    },
+                    "oscar_nominations": {
+                        "$id": "#/items/anyOf/0/properties/oscar_nominations",
+                        "type": "integer",
+                        "title": "Oscar Nominations",
+                        "description": "Number of (Oscar) Academy Awards nominations",
+                        "default": 0,
+                        "examples": [
+                            8
+                        ]
+                    },
+                    "oscars_won": {
+                        "$id": "#/items/anyOf/0/properties/oscars_won",
+                        "type": "integer",
+                        "title": "Oscars Won",
+                        "description": "Number of (Oscars) Academy Awards won",
+                        "default": 0,
+                        "examples": [
+                            1
+                        ]
+                    },
+                    "director": {
+                        "$id": "#/items/anyOf/0/properties/director",
+                        "type": "object",
+                        "title": "Director",
+                        "description": "Director of the movie",
+                        "default": {},
+                        "examples": [
+                            {
+                                "name": "Quentin",
+                                "surname": "Tarantino"
+                            }
+                        ],
+                        "required": [
+                            "name",
+                            "surname"
+                        ],
+                        "properties": {
+                            "name": {
+                                "$id": "#/items/anyOf/0/properties/director/properties/name",
+                                "type": "string",
+                                "title": "Director Name",
+                                "description": "First name of the movie director",
+                                "default": "",
+                                "examples": [
+                                    "Quentin"
+                                ]
+                            },
+                            "surname": {
+                                "$id": "#/items/anyOf/0/properties/director/properties/surname",
+                                "type": "string",
+                                "title": "Director Surname",
+                                "description": "Last name of the movie director",
+                                "default": "",
+                                "examples": [
+                                    "Tarantino"
+                                ]
+                            }
+                        },
+                        "additionalProperties": true
+                    },
+                    "starring": {
+                        "$id": "#/items/anyOf/0/properties/starring",
+                        "type": "array",
+                        "title": "Starring",
+                        "description": "A list of actors starring in the movie",
+                        "default": [],
+                        "examples": [
+                            [
+                                {
+                                    "name": "Brad",
+                                    "surname": "Pitt"
+                                },
+                                {
+                                    "name": "Christopher",
+                                    "surname": "Waltz"
+                                }
+                            ]
+                        ],
+                        "additionalItems": true,
+                        "items": {
+                            "$id": "#/items/anyOf/0/properties/starring/items",
+                            "anyOf": [
+                                {
+                                    "$id": "#/items/anyOf/0/properties/starring/items/anyOf/0",
+                                    "type": "object",
+                                    "title": "Actor",
+                                    "description": "Starring actor in the movie",
+                                    "default": {},
+                                    "examples": [
+                                        {
+                                            "name": "Brad",
+                                            "surname": "Pitt"
+                                        }
+                                    ],
+                                    "required": [
+                                        "name",
+                                        "surname"
+                                    ],
+                                    "properties": {
+                                        "name": {
+                                            "$id": "#/items/anyOf/0/properties/starring/items/anyOf/0/properties/name",
+                                            "type": "string",
+                                            "title": "Actor Name",
+                                            "description": "First name of the movie actor",
+                                            "default": "",
+                                            "examples": [
+                                                "Brad"
+                                            ]
+                                        },
+                                        "surname": {
+                                            "$id": "#/items/anyOf/0/properties/starring/items/anyOf/0/properties/surname",
+                                            "type": "string",
+                                            "title": "Actor Surname",
+                                            "description": "Last name of the movie actor",
+                                            "default": "",
+                                            "examples": [
+                                                "Pitt"
+                                            ]
+                                        }
+                                    },
+                                    "additionalProperties": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                "additionalProperties": true
+            }
+        ]
+    }
+}
