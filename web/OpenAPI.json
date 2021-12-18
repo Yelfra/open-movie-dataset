@@ -1,0 +1,120 @@
+{
+    "openapi": "1.0.0",
+    "info": {
+        "title": "Open Movie Dataset",
+        "version": "1.0.1",
+        "license": "MIT License",
+        "contact": {
+            "name": "API Support",
+            "url": "/",
+            "email": "fj52398@fer.hr"
+        }
+    },
+    "paths": {
+        "/api/movies": {
+            "get": {
+                "description": "Returns a set of movie data",
+                "responses": {
+                    "200": {
+                        "message": "Dataset fetched"
+                    }
+                }
+            },
+            "post": {
+                "description": "Creates a new set of movie data",
+                "responses": {
+                    "200": {
+                        "message": "Movie dataset already exists"
+                    },
+                    "201": {
+                        "message": "Successful request, new movie dataset created"
+                    }
+                }
+            }
+        },
+        "/api/movies/titles": {
+            "get": {
+                "description": "Returns a json of movie titles",
+                "responses": {
+                    "200": {
+                        "message": "Movie titles fetched"
+                    }
+                }
+            }
+        },
+        "/api/movies/directors": {
+            "get": {
+                "description": "Returns a json of movie directors",
+                "responses": {
+                    "200": {
+                        "message": "Movie directors fetched"
+                    }
+                }
+            }
+        },
+        "/api/movies/actors": {
+            "get": {
+                "description": "Returns a json of movie actors",
+                "responses": {
+                    "200": {
+                        "message": "Movie actors fetched"
+                    }
+                }
+            }
+        },
+        "/api/movies/{id}": {
+            "get": {
+                "description": "Returns data of the movie with the provided id",
+                "responses": {
+                    "200": {
+                        "message": "Movies with the provided id fetched"
+                    },
+                    "400": {
+                        "message" : "The server could not understand the request due to invalid syntax."
+                    },
+                    "404": {
+                        "message" : "Movie with the provided id doesn't exist"
+                    }
+                }
+            },
+            "put": {
+                "description": "Returns changed data of the movie with the provided id",
+                "responses": {
+                    "200": {
+                        "message": "Request successful"
+                    },
+                    "400": {
+                        "message" : "The server could not understand the request due to invalid syntax."
+                    },
+                    "404": {
+                        "message" : "Movie with the provided id doesn't exist"
+                    }
+                }
+            },
+            "delete": {
+                "description": "Deletes data of the movie with the provided id",
+                "responses": {
+                    "200": {
+                        "message": "Movie with the provided id successfully deleted"
+                    },
+                    "400": {
+                        "message" : "The server could not understand the request due to invalid syntax."
+                    },
+                    "404": {
+                        "message" : "Movie with the provided id doesn't exist"
+                    }
+                }
+            }
+        },
+        "/api/hoteli/openapi": {
+            "get": {
+                "description": "Returns the OpenAPI specification",
+                "responses": {
+                    "200": {
+                        "message": "OpenAPI specification fetch successful"
+                    }
+                }
+            }
+        }
+    }
+}

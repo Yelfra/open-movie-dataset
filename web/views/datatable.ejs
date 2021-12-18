@@ -27,10 +27,10 @@
   </header>
 
   <div>
-    <input type="text" id="input-all" onkeyup="searchAll()" placeholder="Search all columns..">
+    <input type="text" id="input-all" class="input-all" onkeyup="searchAll()" placeholder="Search all columns..">
 
     <div>
-      <select id="filter-select" onchange="openFilterFields(this)">
+      <select id="filter-select" class="filter-select" onchange="openFilterFields(this)">
         <option style="color: rgb(175, 175, 175);">Filter by...</option>
         <option value="1" data-type="number">Year</option>
         <option value="4" data-type="number">IMDb Rating</option>
@@ -43,12 +43,12 @@
         <input style="display: none;" type="text" id="filter-from" class="filter-hidden" placeholder="From...">
         <input style="display: none;" type="text" id="filter-to" class="filter-hidden" placeholder=" To...">
 
-        <button style="display: none;" class="filter-hidden" onclick="filterSubmit()">Filter</button>
+        <button style="display: none;" id="filter-submit" class="filter-hidden" onclick="filterSubmit()">Filter</button>
 
-        <a href="/exports/movies.json" style="display: none;" class="filter-hidden" download="moviesJSON">
+        <a href="/exports/movies.json" style="display: none;" id="download-json" class="filter-hidden" download="movies">
           <button>Download JSON</button>
         </a>
-        <a href="/exports/movies.csv" style="display: none;" class="filter-hidden" download="moviesCSV">
+        <a href="/exports/movies.csv" style="display: none;" id="download-csv" class="filter-hidden" download="movies">
           <button>Download CSV</button>
         </a>
       </div>
@@ -56,7 +56,7 @@
   </div>
 
   <main>
-    <table id="data-table">
+    <table id="data-table" class="data-table">
       <thead>
         <tr class="header">
           <th>Title</th>
@@ -72,7 +72,7 @@
         </tr>
       </thead>
 
-      <tbody id="data-table-rows">
+      <tbody id="data-table-rows" class="data-table-rows">
         <% for (let movie of movies) { %>
           <tr>
             <td>

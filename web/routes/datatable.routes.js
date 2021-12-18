@@ -2,9 +2,10 @@ const express = require('express');
 const router = express.Router();
 const client = require('../database');
 
-router.get('/', async function (req, res, next) {
-    
-    const movieQuery = `
+router.use(express.json());
+
+// INITIAL QUERRY
+const movieDisplayQuery = `
     
 		SELECT 
 			 movie.title AS "title",
@@ -28,20 +29,72 @@ router.get('/', async function (req, res, next) {
 			GROUP BY movie.movieid, movie.title, movie.year, movie.rating_imdb, movie.duration, movie.country, movie.oscarnom, movie.oscars,
 				director.name, director.surname
 			LIMIT 10
-    `
+    `;
 
-    const movieJSON = (await client.query(movieQuery, []));
-    //console.log("movieJSON:\n" + JSON.stringify(movieJSON));
+// EXPORTS
+var pathJSON = 'C:/Users/Franz Joseph/Documents/GitHub/OR_0036523987/web/exports/export.json';
+var pathCSV = 'C:/Users/Franz Joseph/Documents/GitHub/OR_0036523987/web/exports/export.csv';
 
-    //console.log("\nNESTO:\n" + JSON.stringify(movieJSON.rows[0]));
+// MAIN
+router.get('/', async function (req, res, next) {
 
-    //const rowsJSON = movieJSON.rows;
-    //console.log("\nrowsJSON:\n" + JSON.stringify(rowsJSON));
+	const movieJSON = (await client.query(movieDisplayQuery, []));
+	//console.log("movieJSON:\n" + JSON.stringify(movieJSON));
 
-	
-    res.render('../views/datatable', {
-        movies: movieJSON.rows
-    });
+	//console.log("\nNESTO:\n" + JSON.stringify(movieJSON.rows[0]));
+
+	//const rowsJSON = movieJSON.rows;
+	//console.log("\nrowsJSON:\n" + JSON.stringify(rowsJSON));
+
+	res.render('../views/datatable', {
+		movies: movieJSON.rows
+	});
+});
+/*
+const itemsContainer = document.querySelector(".data-table-rows");
+const searchField = document.querySelector(".input-all");
+const select = document.querySelector(".filter-select");
+
+
+function movieDisplayTemplate(data) {
+	const {movie, actor} = data;
+
+	return `<tr>
+				<td>${movie.title}</td>
+				<td>${movie.year}</td>
+				<td>${movie.director.name} ${movie.director.name}</td>
+				<td>${movie.genre}</td>
+				<td>${movie.IMDb_rating}</td>
+				<td>${movie.duration}</td>
+				<td>${movie.country}</td>
+				<td>${actor.name} ${actor.surname}</td>
+				<td>${movie.oscar_nominations}</td>
+				<td>${movie.oscars_won}</td>
+			</tr>`
+}
+
+
+router.post('/', async function (req, res, next) {
+
+	const response = await fetch(req.body.)
+
+
+
 });
 
+async function searchAll() {
+
+	const response = await fetch(req);
+	var input = document.getElementById("input-all");
+
+	if (!input) {
+		console.log('0');
+	}
+	else {
+		console.log('1');
+	}
+
+
+}
+*/
 module.exports = router;
