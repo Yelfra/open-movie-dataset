@@ -1,0 +1,89 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 14.0
+-- Dumped by pg_dump version 14.0
+
+-- Started on 2021-12-21 17:08:51
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 210 (class 1259 OID 16785)
+-- Name: actor; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.actor (
+    actorid integer NOT NULL,
+    name character varying(30) NOT NULL,
+    surname character varying(30) NOT NULL
+);
+
+
+ALTER TABLE public.actor OWNER TO postgres;
+
+--
+-- TOC entry 3319 (class 0 OID 16785)
+-- Dependencies: 210
+-- Data for Name: actor; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.actor (actorid, name, surname) VALUES (1, 'Brad', 'Pitt');
+INSERT INTO public.actor (actorid, name, surname) VALUES (2, 'Christopher', 'Waltz');
+INSERT INTO public.actor (actorid, name, surname) VALUES (3, 'Michael', 'Fassbender');
+INSERT INTO public.actor (actorid, name, surname) VALUES (4, 'Elijah', 'Wood');
+INSERT INTO public.actor (actorid, name, surname) VALUES (5, 'Ian', 'McKellen');
+INSERT INTO public.actor (actorid, name, surname) VALUES (6, 'Viggo', 'Mortensen');
+INSERT INTO public.actor (actorid, name, surname) VALUES (7, 'Taika', 'Waititi');
+INSERT INTO public.actor (actorid, name, surname) VALUES (8, 'Scarlett', 'Johansson');
+INSERT INTO public.actor (actorid, name, surname) VALUES (9, 'Roman Griffin', 'Davis');
+INSERT INTO public.actor (actorid, name, surname) VALUES (10, 'Hugh', 'Jackman');
+INSERT INTO public.actor (actorid, name, surname) VALUES (11, 'Jake', 'Gyllenhaal');
+INSERT INTO public.actor (actorid, name, surname) VALUES (12, 'Viola', 'Davis');
+INSERT INTO public.actor (actorid, name, surname) VALUES (13, 'Leonardo', 'DiCaprio');
+INSERT INTO public.actor (actorid, name, surname) VALUES (14, 'Tom', 'Hardy');
+INSERT INTO public.actor (actorid, name, surname) VALUES (15, 'Cilian', 'Murphy');
+INSERT INTO public.actor (actorid, name, surname) VALUES (16, 'Tim', 'Robbins');
+INSERT INTO public.actor (actorid, name, surname) VALUES (17, 'Morgan', 'Freeman');
+INSERT INTO public.actor (actorid, name, surname) VALUES (18, 'Francois', 'Cluzet');
+INSERT INTO public.actor (actorid, name, surname) VALUES (19, 'Omar', 'Sy');
+INSERT INTO public.actor (actorid, name, surname) VALUES (20, 'Colin', 'Farrell');
+INSERT INTO public.actor (actorid, name, surname) VALUES (21, 'Brendan', 'Gleeson');
+INSERT INTO public.actor (actorid, name, surname) VALUES (22, 'Ralph', 'Fienes');
+INSERT INTO public.actor (actorid, name, surname) VALUES (23, 'Russell', 'Crowe');
+INSERT INTO public.actor (actorid, name, surname) VALUES (24, 'Joaquin', 'Phoenix');
+INSERT INTO public.actor (actorid, name, surname) VALUES (25, 'Connie', 'Nielsen');
+INSERT INTO public.actor (actorid, name, surname) VALUES (26, 'Timothee', 'Chalamet');
+INSERT INTO public.actor (actorid, name, surname) VALUES (27, 'Rebecca', 'Ferguson');
+INSERT INTO public.actor (actorid, name, surname) VALUES (28, 'Oscar', 'Isaac');
+
+
+--
+-- TOC entry 3179 (class 2606 OID 16789)
+-- Name: actor actor_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.actor
+    ADD CONSTRAINT actor_pkey PRIMARY KEY (actorid);
+
+
+-- Completed on 2021-12-21 17:08:51
+
+--
+-- PostgreSQL database dump complete
+--
+

@@ -1,0 +1,70 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 14.0
+-- Dumped by pg_dump version 14.0
+
+-- Started on 2021-12-21 17:21:07
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 211 (class 1259 OID 16790)
+-- Name: director; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.director (
+    directorid integer NOT NULL,
+    name character varying(30) NOT NULL,
+    surname character varying(30) NOT NULL
+);
+
+
+ALTER TABLE public.director OWNER TO postgres;
+
+--
+-- TOC entry 3319 (class 0 OID 16790)
+-- Dependencies: 211
+-- Data for Name: director; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.director (directorid, name, surname) VALUES (1, 'Quentin', 'Tarantino');
+INSERT INTO public.director (directorid, name, surname) VALUES (2, 'Peter', 'Jackson');
+INSERT INTO public.director (directorid, name, surname) VALUES (3, 'Taika', 'Waititi');
+INSERT INTO public.director (directorid, name, surname) VALUES (4, 'Denis', 'Villeneuve');
+INSERT INTO public.director (directorid, name, surname) VALUES (5, 'Christopher', 'Nolan');
+INSERT INTO public.director (directorid, name, surname) VALUES (6, 'Frank', 'Darabont');
+INSERT INTO public.director (directorid, name, surname) VALUES (7, 'Olivier', 'Nakache');
+INSERT INTO public.director (directorid, name, surname) VALUES (8, 'Martin', 'McDonagh');
+INSERT INTO public.director (directorid, name, surname) VALUES (9, 'Ridley', 'Scott');
+
+
+--
+-- TOC entry 3179 (class 2606 OID 16794)
+-- Name: director director_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.director
+    ADD CONSTRAINT director_pkey PRIMARY KEY (directorid);
+
+
+-- Completed on 2021-12-21 17:21:07
+
+--
+-- PostgreSQL database dump complete
+--
+
