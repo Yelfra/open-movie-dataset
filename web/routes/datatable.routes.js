@@ -47,6 +47,9 @@ router.get('/', async function (req, res, next) {
 	//console.log("\nrowsJSON:\n" + JSON.stringify(rowsJSON));
 
 	res.render('../views/datatable', {
+		title: "OMD - Datatable",
+		isAuthenticated: req.oidc.isAuthenticated(),
+		user: req.oidc.user,
 		movies: movieJSON.rows
 	});
 });

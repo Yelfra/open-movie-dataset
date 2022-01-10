@@ -1,167 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
-  
-  <head>
-    <meta charset="utf-8" />
 
-    <meta name="description" content="Open Movie Database"/>
+<head>
+  <meta charset="utf-8" />
 
-    <title>Open Movie Dataset</title>
+  <meta name="description" content="Open Movie Database" />
 
-  </head>
+  <title>Open Movie Dataset</title>
 
-  <body>
-    
-    <header className="App-header">
-      <div>
-        <ul>
-          <li>
-            <a className="App-link" href="#">Home</a>
-          </li>
-          <li>
-            <a className="App-link" href="datatable">Datatable</a>
-          </li>
-        </ul>
-      </div>
+</head>
 
-    </header>
+<body>
+  <nav>
+    <ul>
+      <% if(!isAuthenticated) { %>
+      <li>
+          <a href="/login/">Login</a>
+          <% } else { %>
+      </li>
+      <li>
+        <a href="profile">Welcome, <%= user.nickname.charAt(0).toUpperCase() + user.nickname.slice(1) %> <br><a>
+        <a href="/logout/">Logout</a>
+      </li>
+      <% } %>
+    </ul>
+  </nav>
 
+  <header className="App-header">
+    <nav>
+      <ul>
+        <li>
+          <a className="App-link" href="/">Home</a>
+        </li>
+        <li>
+          <a className="App-link" href="datatable">Datatable</a>
+        </li>
+      </ul>
+    </nav>
 
-    <h1 id="or_0036523987">Open Movie Dataset</h1>
-        <p> Otvoreno Računarstvo Fran Jelavić</p>
-
-        <h2 id="licensing">Licensing</h2>
-        <p> MIT License</p>
-
-        <h2 id="author">Author</h2>
-        <p> Fran Jelavić</p>
-
-        <h2 id="version">Version</h2>
-        <p> 1.0</p>
-
-        <h2 id="language">Language</h2>
-        <p> English</p>
-
-        <h2 id="overview">Overview</h2>
-        <h3 id="database-model">Database model</h3>
-        <p> Query commands used to generate tables of the database are listed in tables_sql.txt.</p>
-        <h3 id="data">Data</h3>
-        <p> Query commands used to input data into the database are listed in data_sql.txt.</p>
-        <h3 id="generating-the-json-file">Generating the JSON file</h3>
-        <p> Query commands used to generate the movies.JSON file are listed in JSON_gen.txt.</p>
-        <h3 id="generating-the-csv-file">Generating the CSV file</h3>
-        <p> Command used for generating the movies.CSV file can be found in CSV_gen.txt.</p>
-
-        <h2 id="atribute-overview">Atribute Overview</h2>
-        <h3 id="movie">Movie</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Description</th>
-              <th>Datatype</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>title</td>
-              <td>Name of the movie</td>
-              <td>String (100 Characters)</td>
-            </tr>
-            <tr>
-              <td>year</td>
-              <td>Year the movie was released</td>
-              <td>Integer</td>
-            </tr>
-            <tr>
-              <td>rating_IMDb</td>
-              <td>Average movie rating on IMDb</td>
-              <td>Float</td>
-            </tr>
-            <tr>
-              <td>duration</td>
-              <td>Movie duration in minutes</td>
-              <td>Integer</td>
-            </tr>
-            <tr>
-              <td>country</td>
-              <td>Country of movie origin or production</td>
-              <td>String (100 Characters)</td>
-            </tr>
-            <tr>
-              <td>oscarNom</td>
-              <td>Number of (Oscar) Academy Awards nominations</td>
-              <td>Integer</td>
-            </tr>
-            <tr>
-              <td>oscars</td>
-              <td>Number of (Oscars) Academy Awards won</td>
-              <td>Integer</td>
-            </tr>
-          </tbody>
-        </table>
-        <h3 id="actor">Actor</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Description</th>
-              <th>Datatype</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>name</td>
-              <td>Name of the actor</td>
-              <td>String (30 Characters)</td>
-            </tr>
-            <tr>
-              <td>surname</td>
-              <td>Surname of the actor</td>
-              <td>String (30 Characters)</td>
-            </tr>
-          </tbody>
-        </table>
-        <h3 id="director">Director</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Description</th>
-              <th>Datatype</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>name</td>
-              <td>Name of the director</td>
-              <td>String (30 Characters)</td>
-            </tr>
-            <tr>
-              <td>surname</td>
-              <td>Surname of the director</td>
-              <td>String (30 Characters)</td>
-            </tr>
-          </tbody>
-        </table>
-        <h3 id="genre">Genre</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Description</th>
-              <th>Datatype</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>name</td>
-              <td>Name of the genre</td>
-              <td>String (20 Characters)</td>
-            </tr>
-          </tbody>
-        </table>
+  </header>
 
 
-  </body>
+  <h1 id="or_0036523987">Open Movie Dataset</h1>
+  <p> Otvoreno Računarstvo Fran Jelavić</p>
+
+  <h2 id="licensing">Licensing</h2>
+  <p> MIT License</p>
+
+  <h2 id="author">Author</h2>
+  <p> Fran Jelavić</p>
+
+  <h2 id="version">Version</h2>
+  <p> 1.0</p>
+
+  <h2 id="language">Language</h2>
+  <p> English</p>
+
+  <h2 id="overview">Overview</h2>
+  <h3 id="database-model">Database model</h3>
+  <p> Query commands used to generate tables of the database are listed in tables_sql.txt.</p>
+  <h3 id="data">Data</h3>
+  <p> Query commands used to input data into the database are listed in data_sql.txt.</p>
+  <h3 id="generating-the-json-file">Generating the JSON file</h3>
+  <p> Query commands used to generate the movies.JSON file are listed in JSON_gen.txt.</p>
+  <h3 id="generating-the-csv-file">Generating the CSV file</h3>
+  <p> Command used for generating the movies.CSV file can be found in CSV_gen.txt.</p>
+
+  <h2 id="atribute-overview">Atribute Overview</h2>
+  <h3 id="movie">Movie</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Datatype</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>title</td>
+        <td>Name of the movie</td>
+        <td>String (100 Characters)</td>
+      </tr>
+      <tr>
+        <td>year</td>
+        <td>Year the movie was released</td>
+        <td>Integer</td>
+      </tr>
+      <tr>
+        <td>rating_IMDb</td>
+        <td>Average movie rating on IMDb</td>
+        <td>Float</td>
+      </tr>
+      <tr>
+        <td>duration</td>
+        <td>Movie duration in minutes</td>
+        <td>Integer</td>
+      </tr>
+      <tr>
+        <td>country</td>
+        <td>Country of movie origin or production</td>
+        <td>String (100 Characters)</td>
+      </tr>
+      <tr>
+        <td>oscarNom</td>
+        <td>Number of (Oscar) Academy Awards nominations</td>
+        <td>Integer</td>
+      </tr>
+      <tr>
+        <td>oscars</td>
+        <td>Number of (Oscars) Academy Awards won</td>
+        <td>Integer</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="actor">Actor</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Datatype</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>name</td>
+        <td>Name of the actor</td>
+        <td>String (30 Characters)</td>
+      </tr>
+      <tr>
+        <td>surname</td>
+        <td>Surname of the actor</td>
+        <td>String (30 Characters)</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="director">Director</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Datatype</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>name</td>
+        <td>Name of the director</td>
+        <td>String (30 Characters)</td>
+      </tr>
+      <tr>
+        <td>surname</td>
+        <td>Surname of the director</td>
+        <td>String (30 Characters)</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="genre">Genre</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Datatype</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>name</td>
+        <td>Name of the genre</td>
+        <td>String (20 Characters)</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+</body>
+
 </html>

@@ -13,17 +13,33 @@
 
 <body>
 
-  <header>
-    <div>
+  <nav>
+    <ul>
+      <% if(!isAuthenticated) { %>
+      <li>
+          <a href="/login/">Login</a>
+          <% } else { %>
+      </li>
+      <li>
+        <a href="profile">Welcome, <%= user.nickname.charAt(0).toUpperCase() + user.nickname.slice(1) %> <br><a>
+        <a href="/logout/">Logout</a>
+      </li>
+      <% } %>
+    </ul>
+  </nav>
+
+  <header className="App-header">
+    <nav>
       <ul>
         <li>
-          <a href="/">Home</a>
+          <a className="App-link" href="/">Home</a>
         </li>
         <li>
-          <a href="#">Datatable</a>
+          <a className="App-link" href="datatable">Datatable</a>
         </li>
       </ul>
-    </div>
+    </nav>
+
   </header>
 
   <div>

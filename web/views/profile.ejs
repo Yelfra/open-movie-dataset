@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="description" content="Open Movie Database" />
+
+    <title>Open Movie Dataset</title>
+
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <% if(!isAuthenticated) { %>
+                <li>
+                    <a href="/login/">Login</a>
+                    <% } else { %>
+                </li>
+                <li>
+                    <a href="profile">Welcome, <%= user.nickname.charAt(0).toUpperCase() + user.nickname.slice(1) %>
+                            <br><a>
+                                <a href="/logout/">Logout</a>
+                </li>
+                <% } %>
+        </ul>
+    </nav>
+
+    <header className="App-header">
+        <nav>
+            <ul>
+                <li>
+                    <a className="App-link" href="/">Home</a>
+                </li>
+                <li>
+                    <a className="App-link" href="datatable">Datatable</a>
+                </li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <h1>
+        <%= user.nickname.toUpperCase() %>
+    </h1>
+    <h4>
+        <%= user.name %>
+    </h4>
+
+    <img src='<%= user.picture %>' />
+
+    <!--
+  <pre>
+      <%= JSON.stringify(user, null, 2) %>
+  </pre>
+-->
+</body>
+
+</html>
